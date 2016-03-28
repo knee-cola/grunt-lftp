@@ -183,9 +183,6 @@ module.exports = function(grunt) {
       grunt.fail.warn("Failed.");
     }
 
-    console.log(args);
-    grunt.log.write(cmd);
-
     child = child_process.exec(cmd, {}, function(error, stdout, stderr) {
       if (error) {
         grunt.fail.warn(error);
