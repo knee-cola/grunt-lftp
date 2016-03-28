@@ -87,7 +87,7 @@ module.exports = function(grunt) {
               args.push("--exclude=" + value);
             } else {
               grunt.fail.warn(task + ": Excluded item \"" + value + "\" " +
-                              "has type" + (typeof value) + ", " +
+                              "has type " + (typeof value) + ", " +
                               "expected a string.");
             }
           });
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
               args.push("--exclude-glob=" + value);
             } else {
               grunt.fail.warn(task + ": Excluded glob \"" + value + "\" " +
-                              "has type" + (typeof value) + ", " +
+                              "has type " + (typeof value) + ", " +
                               "expected a string.");
             }
           });
@@ -121,7 +121,7 @@ module.exports = function(grunt) {
               args.push("--include=" + value);
             } else {
               grunt.fail.warn(task + ": Included item \"" + value + "\" " +
-                              "has type" + (typeof value) + ", " +
+                              "has type " + (typeof value) + ", " +
                               "expected a string.");
             }
           });
@@ -138,7 +138,7 @@ module.exports = function(grunt) {
               args.push("--include-glob=" + value);
             } else {
               grunt.fail.warn(task + ": Included glob \"" + value + "\" " +
-                              "has type" + (typeof value) + ", " +
+                              "has type " + (typeof value) + ", " +
                               "expected a string.");
             }
           });
