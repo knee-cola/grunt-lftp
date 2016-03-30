@@ -19,6 +19,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask(task, description, function() {
     var options = this.options({
       delete: false,
+      noPerms: true,
       verbose: false,
       dryRun: false,
       verifyCertificate: true
@@ -61,7 +62,15 @@ module.exports = function(grunt) {
       if ((typeof options.delete) !== "boolean") {
         grunt.fail.warn(task + ": options.delete must be boolean.");
       } else if (options.delete) {
+        // TODO: args is specifically args for mirroring, should its
+        // own configuration object.
         args.push("--delete");
+      }
+
+      if ((typeof options.noPerms) !== "boolean") {
+        grunt.fail.warn(task + ": options.noPerms must be boolean.");
+      } else if (options.noPerms) {
+        args.push("--no-perms");
       }
 
       if ((typeof options.verbose) !== "boolean") {
