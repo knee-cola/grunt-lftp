@@ -19,7 +19,8 @@ module.exports = function(grunt) {
   grunt.registerMultiTask(task, description, function() {
     var options = this.options({
       delete: false,
-      noPerms: true,
+      noPerms: false,
+      dereference: false,
       verbose: false,
       dryRun: false,
       verifyCertificate: true
@@ -71,6 +72,12 @@ module.exports = function(grunt) {
         grunt.fail.warn(task + ": options.noPerms must be boolean.");
       } else if (options.noPerms) {
         args.push("--no-perms");
+      }
+
+      if ((typeof options.dereference) !== "boolean") {
+        grunt.fail.warn(task + ": options.dereference must be boolean.");
+      } else if (options.noPerms) {
+        args.push("--dereference");
       }
 
       if ((typeof options.verbose) !== "boolean") {
