@@ -21,7 +21,8 @@ module.exports = function(grunt) {
       delete: false,
       verbose: false,
       dryRun: false,
-      verifyCertificate: true
+      verifyCertificate: true,
+      sftpAutoConfirm: false
     }), password, child, cmd, args = [], done = this.async();
 
     try {
@@ -78,6 +79,10 @@ module.exports = function(grunt) {
 
       if ((typeof options.verifyCertificate) !== "boolean") {
         grunt.fail.warn(task + ": options.verifyCertificate must be boolean.");
+      }
+
+      if ((typeof options.sftpAutoConfirm) !== "boolean") {
+        grunt.fail.warn(task + ": options.sftpAutoConfirm must be boolean.");
       }
 
       if ((typeof options.exclude) !== "undefined") {
@@ -154,26 +159,27 @@ module.exports = function(grunt) {
       } else if (options.mode === "push") {
         cmd = util.format(
           "lftp -c \"%s;\n" +
-            "set sftp:auto-confirm yes;\n" +
             "open %s;\n" +
             "user %s '%s';\n" +
             "lcd %s;\n" +
             "mirror --continue --reverse %s %s %s;\n" +
             "bye\"",
           options.verifyCertificate ? "" : "set ssl:verify-certificate no",
+          options.sftpAutoConfirm ? "" : "set sftp:auto-confirm yes;\n",
           options.host, options.user, escape(password), options.lcd,
           (args[0] != null ? args.join(" ") : ""),
           options.lcd, options.rcd);
       } else if (options.mode === "pull") {
         cmd = util.format(
           "lftp -c \"%s;\n" +
-            "set sftp:auto-confirm yes;\n" +
+            "%s" +
             "open %s;\n" +
             "user %s '%s';\n" +
             "lcd %s;\n" +
             "mirror --continue %s %s %s;\n" +
             "bye\"",
           options.verifyCertificate ? "" : "set ssl:verify-certificate no",
+          options.sftpAutoConfirm ? "" : "set sftp:auto-confirm yes;\n",
           options.host, options.user, escape(password), options.lcd,
           (args[0] != null ? args.join(" ") : ""),
           options.rcd, options.lcd);
