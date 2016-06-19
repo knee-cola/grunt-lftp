@@ -175,6 +175,7 @@ module.exports = function(grunt) {
       } else if (options.mode === "push") {
         cmd = util.format(
           "lftp -c \"%s;\n" +
+            "%s" +
             "open %s;\n" +
             "user %s '%s';\n" +
             "lcd %s;\n" +
