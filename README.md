@@ -138,6 +138,15 @@ This only matters if you're using SFTP (which you should be).  You might be
 using a self-signed certificate which you trust but is not signed by a known
 certificate authority.  If that is the case, set this to `false`.
 
+#### options.sftpAutoConfirm
+Type: `Boolean`
+Default value: `false`
+
+Set to true if you want LFTP to answer "yes" to all SSH questions, in particular
+to the question about a new host key. Otherwise it answers "no".  Useful if
+you're using SFTP, but beware that this option is only supported in
+[`lftp` 4.6.2](https://lftp.yar.ru/news.html#4.6.2) or greater.
+
 #### options.exclude
 Type: `Array`
 Default value: `[]`
