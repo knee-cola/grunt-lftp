@@ -182,7 +182,7 @@ module.exports = function(grunt) {
             "mirror --continue --reverse %s %s %s;\n" +
             "bye\"",
           options.verifyCertificate ? "" : "set ssl:verify-certificate no",
-          options.sftpAutoConfirm ? "" : "set sftp:auto-confirm yes;\n",
+          options.sftpAutoConfirm ? "set sftp:auto-confirm yes;\n" : "",
           options.host, options.user, escape(password), options.lcd,
           (args[0] != null ? args.join(" ") : ""),
           options.lcd, options.rcd);
@@ -196,7 +196,7 @@ module.exports = function(grunt) {
             "mirror --continue %s %s %s;\n" +
             "bye\"",
           options.verifyCertificate ? "" : "set ssl:verify-certificate no",
-          options.sftpAutoConfirm ? "" : "set sftp:auto-confirm yes;\n",
+          options.sftpAutoConfirm ? "set sftp:auto-confirm yes;\n" : "",
           options.host, options.user, escape(password), options.lcd,
           (args[0] != null ? args.join(" ") : ""),
           options.rcd, options.lcd);
