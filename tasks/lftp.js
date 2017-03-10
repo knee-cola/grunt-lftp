@@ -178,12 +178,11 @@ module.exports = function(grunt) {
             "%s" +
             "open %s;\n" +
             "user %s '%s';\n" +
-            "lcd %s;\n" +
             "mirror --continue --reverse %s %s %s;\n" +
             "bye\"",
           options.verifyCertificate ? "" : "set ssl:verify-certificate no",
           options.sftpAutoConfirm ? "set sftp:auto-confirm yes;\n" : "",
-          options.host, options.user, escape(password), options.lcd,
+          options.host, options.user, escape(password),
           (args[0] != null ? args.join(" ") : ""),
           options.lcd, options.rcd);
       } else if (options.mode === "pull") {
@@ -192,12 +191,11 @@ module.exports = function(grunt) {
             "%s" +
             "open %s;\n" +
             "user %s '%s';\n" +
-            "lcd %s;\n" +
             "mirror --continue %s %s %s;\n" +
             "bye\"",
           options.verifyCertificate ? "" : "set ssl:verify-certificate no",
           options.sftpAutoConfirm ? "set sftp:auto-confirm yes;\n" : "",
-          options.host, options.user, escape(password), options.lcd,
+          options.host, options.user, escape(password),
           (args[0] != null ? args.join(" ") : ""),
           options.rcd, options.lcd);
       }

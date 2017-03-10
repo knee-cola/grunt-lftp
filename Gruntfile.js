@@ -16,7 +16,7 @@ module.exports = function(grunt) {
           passcmd: "pass mango/ftp/mango@mangoagogo.com.au | sed -n 1p",
           host: "sftp://mangoagogo.com.au",
           user: "mango",
-          lcd: "${HOME}/dev/grunt-lftp",
+          lcd: ".",
           rcd: "/home/mango/public_html/grunt-lftp",
           exclude: [ "node_modules/" ],
           delete: true,
