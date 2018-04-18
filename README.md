@@ -48,7 +48,8 @@ grunt.initConfig({
         verbose: true,
         verifyCertificate: false,
         mode: "push",
-        noPerms: false
+        noPerms: false,
+        dereference: false
       }
     }
   }
