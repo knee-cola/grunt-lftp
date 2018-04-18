@@ -47,7 +47,8 @@ grunt.initConfig({
         delete: true,
         verbose: true,
         verifyCertificate: false,
-        mode: "push"
+        mode: "push",
+        noPerms: false
       }
     }
   }
@@ -177,3 +178,17 @@ Default value: `[]`
 
 Like `options.include`, but uses `--include-glob` flag instead of `--include`.
 Globs will be expanded by `/bin/sh`.
+
+#### options.noPerms
+Type: `Boolean`
+Default value: `false`
+
+When set to `true`, mirror won't try to copy file and directory permissions.
+Default value is `false`.
+
+#### options.dereference
+Type: `Boolean`
+Default value: `false`
+
+When `true`, mirror will dereference symbolic links by default.
+Default if value `false`.
